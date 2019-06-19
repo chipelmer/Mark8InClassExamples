@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mark8InClassExamples", "Mark8InClassExamples\Mark8InClassExamples.csproj", "{E59D2FD1-1DAD-47A0-AA69-C09F3B242A0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E59D2FD1-1DAD-47A0-AA69-C09F3B242A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E59D2FD1-1DAD-47A0-AA69-C09F3B242A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E59D2FD1-1DAD-47A0-AA69-C09F3B242A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E59D2FD1-1DAD-47A0-AA69-C09F3B242A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D4CAFA6-D3C3-4A89-915D-0A3EB03E06FE}
+	EndGlobalSection
+EndGlobal
