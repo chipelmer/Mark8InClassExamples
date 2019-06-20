@@ -6,18 +6,35 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            // Creating variables with different types
-            string firstName = "Chip";
-            char firstLetterOfFirstName = 'C';
-            int favoriteNumber = 2;
-            double pi = 3.14;
-            bool isMarried = true;
-
-            // an if-statement that checks if the value of `favoriteNumber` is greather than 0
-            if (favoriteNumber > 0)
+            // while
+            string userResponse = "no";
+            while (userResponse != "yes")
             {
-                // this will only run if the conditional was true (favoriteNumber > 0)
-                Console.WriteLine("You have a positive outlook!");
+                Console.WriteLine("Please say yes.");
+                userResponse = Console.ReadLine();
+            }
+
+
+            // do-while
+            int numberForDoWhileLoop = 99;
+            do
+            {
+                Console.WriteLine("Hello");
+            } while (numberForDoWhileLoop < 0);
+
+
+            // for
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+            }
+
+
+            // foreach
+            string[] names = { "Chip", "Zee", "Daniel", "Brandon" };
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
             }
         }
     }
