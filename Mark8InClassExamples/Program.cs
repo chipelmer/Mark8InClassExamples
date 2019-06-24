@@ -4,26 +4,33 @@ namespace Mark8InClassExamples
 {
     class Program
     {
-        static void Main()
+        static int AddNumbersFrom1ToN(int n)
         {
-            string name = AskQuestion("What is your name?");
-            string favoriteColor = AskQuestion("What is your favorite color?");
-            string favoriteAnimal = AskQuestion("What is your favorite animal?");
-            Console.WriteLine("Hey, " + name + ".");
-            Console.WriteLine("Your favorite color is " + favoriteColor);
-            Console.WriteLine("Your favorite animal is " + favoriteAnimal);
+            int total = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                total = total + i;
+            }
+            return total;
         }
 
-        static string AskQuestion(string question)
+        static void AskNumericQuestionThenDisplayTotal(string question)
         {
-            string response = "";
-            while (response == "")
-            {
-                Console.WriteLine(question);
-                response = Console.ReadLine();
-            }
+            Console.WriteLine(question);
+            string responseAsAString = Console.ReadLine();
+            int response = int.Parse(responseAsAString);
 
-            return response;
+            // Calling another method that we created
+            int total = AddNumbersFrom1ToN(response);
+
+            Console.WriteLine("If you add all the numbers from 1-" + response + ", the total is " + total);
+        }
+
+        static void Main()
+        {
+            // Calling a method that then calls another method
+            AskNumericQuestionThenDisplayTotal("What is your favorite number?");
+            AskNumericQuestionThenDisplayTotal("What is your favorite year?");
         }
     }
 }
