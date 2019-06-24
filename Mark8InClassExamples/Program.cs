@@ -4,38 +4,26 @@ namespace Mark8InClassExamples
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            // while
-            string userResponse = "no";
-            while (userResponse != "yes")
+            string name = AskQuestion("What is your name?");
+            string favoriteColor = AskQuestion("What is your favorite color?");
+            string favoriteAnimal = AskQuestion("What is your favorite animal?");
+            Console.WriteLine("Hey, " + name + ".");
+            Console.WriteLine("Your favorite color is " + favoriteColor);
+            Console.WriteLine("Your favorite animal is " + favoriteAnimal);
+        }
+
+        static string AskQuestion(string question)
+        {
+            string response = "";
+            while (response == "")
             {
-                Console.WriteLine("Please say yes.");
-                userResponse = Console.ReadLine();
+                Console.WriteLine(question);
+                response = Console.ReadLine();
             }
 
-
-            // do-while
-            int numberForDoWhileLoop = 99;
-            do
-            {
-                Console.WriteLine("Hello");
-            } while (numberForDoWhileLoop < 0);
-
-
-            // for
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine(i);
-            }
-
-
-            // foreach
-            string[] names = { "Chip", "Zee", "Daniel", "Brandon" };
-            foreach (string name in names)
-            {
-                Console.WriteLine(name);
-            }
+            return response;
         }
     }
 }
