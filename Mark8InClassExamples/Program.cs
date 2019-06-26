@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Mark8InClassExamples
 {
@@ -7,39 +6,42 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            int[] values = { 4, 7, 12, 5, 8 };
+            Console.WriteLine("Let's play a guessing game!");
+            Console.WriteLine("What maximum value would you like to use?");
+            string strMax = Console.ReadLine();
+            int max = int.Parse(strMax);
 
-            // This example string array is not used later in the code
-            string[] names = { "Zee", "Brandon", "Daniel", "Josh", "Chip", "Charlotte" };
+            Random rnd = new Random();
+            int secretNumber = rnd.Next(1, max + 1);
 
-            int total1 = SumNumbers(values);
-
-            for (int i = 0; i < values.Length; i++)
+            int guess;
+            do
             {
-                values[i] = 2;
-            }
+                Console.ResetColor();
+                // Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Please guess a number between 1-" + max + ":");
 
-            int total2 = SumNumbers(values);
+                string strGuess = Console.ReadLine();
+                guess = int.Parse(strGuess);
+                // Could do: int guess = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(total1);
-            Console.WriteLine(total2);
-        }
+                if (guess == secretNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("You got it!");
+                }
+                else if (guess > secretNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You were too high, loser!");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You were too low, loser.");
+                }
 
-        static int SumNumbers(int[] nums)
-        {
-            int total = 0;
-            for (int i = 0; i < nums.Length; i++)
-            {
-                total = total + nums[i];
-            }
-
-            // Could do:
-            //foreach (int number in nums)
-            //{
-            //    total += number;
-            //}
-
-            return total;
+            } while (guess != secretNumber);
         }
     }
 }
