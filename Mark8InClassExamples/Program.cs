@@ -71,11 +71,10 @@ namespace Mark8InClassExamples
 
                         System.Threading.Thread.Sleep(4000);
 
-                        // windows
-                        Process.Start(new ProcessStartInfo("cmd", $"/c start https://www.youtube.com/watch?v=9QDZUrvNI-0"));
-
-                        // mac
-                        //Process.Start("open", "https://www.youtube.com/watch?v=9QDZUrvNI-0");
+                        ProcessStartInfo psi = new ProcessStartInfo();
+                        psi.FileName = "https://www.youtube.com/watch?v=9QDZUrvNI-0";
+                        psi.UseShellExecute = true;
+                        Process.Start(psi);
                     }
 
                     score += 10;
