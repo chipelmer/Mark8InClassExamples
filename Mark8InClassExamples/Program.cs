@@ -7,34 +7,21 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("How many pets do you have?");
+            Console.WriteLine("Do you have any pets?");
             string response = Console.ReadLine();
-            int numberOfPets = int.Parse(response);
 
-            string[] petNames = new string[numberOfPets];
+            List<string> petNames = new List<string>();
+            List<string> affirmativeResponses = new List<string>() { "y", "yes", "yeah", "yep", "uh huh" };
 
-            for (int i = 0; i < numberOfPets; i++)
+            while (affirmativeResponses.Contains(response.ToLower()) == true)
             {
                 Console.WriteLine("What is the name of one of your pets?");
                 string petName = Console.ReadLine();
-                petNames[i] = petName;
+                petNames.Add(petName);
+
+                Console.WriteLine("Do you have any more pets?");
+                response = Console.ReadLine();
             }
-
-            //int j = 0;
-            //while (j < numberOfPets)
-            //{
-            //    Console.WriteLine("What is the name of one of your pets?");
-            //    string petName = Console.ReadLine();
-            //    petNames[j] = petName;
-            //    j++;
-            //}
-
-            //foreach (string name in petNames)
-            //{
-            //    Console.WriteLine("What is the name of one of your pets?");
-            //    string petName = Console.ReadLine();
-            //    name = petName; // not allowed by C#
-            //}
         }
     }
 }
