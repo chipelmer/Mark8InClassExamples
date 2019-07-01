@@ -6,27 +6,23 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            // Making 3 separate, independent variables to
-            // describe a cat, which will have to be carefully
-            // tracked/juggled as the program continues
-            string catName = "Oscar";
-            string catColor = "brown";
-            int catAge = 1;
+            // This is calling the overload that accepts 2 integers
+            int result1 = Add(2, 3);
 
-
-            // Making an instance of the Cat class
-            // then assigning values to its properties
-            Cat cat = new Cat();
-            cat.Name = "Oscar";
-            cat.Color = "brown";
-            cat.Age = 1;
+            // This is calling the overload that accepts 3 integers
+            int result2 = Add(12, 20, 9);
         }
-    }
 
-    class Cat
-    {
-        public string Name { get; set; }
-        public string Color { get; set; }
-        public int Age { get; set; }
+
+        // There are 2 overloads for the Add method
+        static int Add(int num1, int num2)
+        {
+            return num1 + num2;
+        }
+
+        static int Add(int num1, int num2, int num3)
+        {
+            return num1 + num2 + num3;
+        }
     }
 }
