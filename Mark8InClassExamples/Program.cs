@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Mark8InClassExamples
 {
@@ -7,21 +6,27 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Do you have any pets?");
-            string response = Console.ReadLine();
+            // Making 3 separate, independent variables to
+            // describe a cat, which will have to be carefully
+            // tracked/juggled as the program continues
+            string catName = "Oscar";
+            string catColor = "brown";
+            int catAge = 1;
 
-            List<string> petNames = new List<string>();
-            List<string> affirmativeResponses = new List<string>() { "y", "yes", "yeah", "yep", "uh huh" };
 
-            while (affirmativeResponses.Contains(response.ToLower()) == true)
-            {
-                Console.WriteLine("What is the name of one of your pets?");
-                string petName = Console.ReadLine();
-                petNames.Add(petName);
-
-                Console.WriteLine("Do you have any more pets?");
-                response = Console.ReadLine();
-            }
+            // Making an instance of the Cat class
+            // then assigning values to its properties
+            Cat cat = new Cat();
+            cat.Name = "Oscar";
+            cat.Color = "brown";
+            cat.Age = 1;
         }
+    }
+
+    class Cat
+    {
+        public string Name { get; set; }
+        public string Color { get; set; }
+        public int Age { get; set; }
     }
 }
