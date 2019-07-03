@@ -13,7 +13,21 @@ namespace Mark8InClassExamples
         public decimal LemonsCostPerCup { get; set; }
         public decimal SugarCostPerCup { get; set; }
         public decimal PricePerCup { get; set; }
-        public int NumberOfCupsSold { get; set; }
+
+        private int numberOfCupsSold;
+        public int NumberOfCupsSold
+        {
+            get
+            {
+                Console.WriteLine("Getting the value of NumberOfCupsSold");
+                return numberOfCupsSold;
+            }
+            set
+            {
+                Console.WriteLine("Assigning a value to NumberOfCupsSold");
+                numberOfCupsSold = value;
+            }
+        }
 
         public decimal GetTotalRevenue()
         {
@@ -22,9 +36,17 @@ namespace Mark8InClassExamples
 
         public decimal GetTotalExpenses()
         {
-            decimal fixedCosts = TableCost + ChairCost + SignCost;
-            decimal variableCosts = (LemonsCostPerCup + SugarCostPerCup) * NumberOfCupsSold;
-            return fixedCosts + variableCosts;
+            return getFixedCosts() + getVariableCosts();
+        }
+
+        private decimal getFixedCosts()
+        {
+            return TableCost + ChairCost + SignCost;
+        }
+
+        private decimal getVariableCosts()
+        {
+            return (LemonsCostPerCup + SugarCostPerCup) * NumberOfCupsSold;
         }
 
         public decimal GetTotalProfit()
