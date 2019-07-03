@@ -4,36 +4,35 @@ namespace Mark8InClassExamples
 {
     class Program
     {
-        static decimal GetDecimalAnswerFromUser(string question)
-        {
-            Console.WriteLine(question);
-            string response = Console.ReadLine();
-            decimal answer = decimal.Parse(response);
-            return answer;
-        }
-
         static void Main(string[] args)
         {
-            LemonadeStand stand = new LemonadeStand();
+            House house1 = new House();
+            house1.Address = "123 Main Street";
 
-            Console.WriteLine("What is the name of this lemonade stand?");
-            stand.Name = Console.ReadLine();
+            House house2 = new House();
+            house2.Address = "999 5th Ave.";
 
-            stand.TableCost = GetDecimalAnswerFromUser("How much will your table cost?");
-            stand.ChairCost = GetDecimalAnswerFromUser("How much will your chair cost?");
-            stand.SignCost = GetDecimalAnswerFromUser("How much will your sign cost?");
-            stand.LemonsCostPerCup = GetDecimalAnswerFromUser("How much will the lemons cost per cup?");
-            stand.SugarCostPerCup = GetDecimalAnswerFromUser("How much will the sugar cost per cup?");
-            stand.PricePerCup = GetDecimalAnswerFromUser("What will be the price of a cup?");
+            house1.RingDoorbell();
+            house2.RingDoorbell();
 
-            Console.WriteLine("How many cups will you sell?");
-            string numberOfCupsResponse = Console.ReadLine();
-            stand.NumberOfCupsSold = int.Parse(numberOfCupsResponse);
+            Console.WriteLine("There are " + House.TotalNumberOfHousesBuilt + " houses.");
+        }
+    }
 
-            decimal totalProfit = stand.GetTotalProfit();
+    class House
+    {
+        public House()
+        {
+            TotalNumberOfHousesBuilt += 1;
+        }
 
-            Console.WriteLine("Your profit will be " + totalProfit);
+        public string Address { get; set; }
 
+        public static int TotalNumberOfHousesBuilt { get; set; }
+
+        public void RingDoorbell()
+        {
+            Console.WriteLine("Ding dong! Is anyone home at " + Address + "?");
         }
     }
 }
