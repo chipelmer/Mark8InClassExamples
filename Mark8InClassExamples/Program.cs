@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace Mark8InClassExamples
 {
@@ -6,33 +8,21 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            House house1 = new House();
-            house1.Address = "123 Main Street";
+            // This is not using all best practices, but it demonstrates making an API
+            // call and parsing a JSON response
 
-            House house2 = new House();
-            house2.Address = "999 5th Ave.";
+            string url = "https://api.chucknorris.io/jokes/random";
+            HttpClient client = new HttpClient();
+            string response = client.GetStringAsync(url).Result;
 
-            house1.RingDoorbell();
-            house2.RingDoorbell();
+            // This manual way of pulling out the text of the joke is not good or reliable:
+            //int jokeStartIndex = response.IndexOf("value") + 8;
+            //int jokeLength = response.Length - jokeStartIndex - 2;
+            //string joke = response.Substring(jokeStartIndex, jokeLength);
 
-            Console.WriteLine("There are " + House.TotalNumberOfHousesBuilt + " houses.");
-        }
-    }
+            string joke2 = JObject.Parse(response).GetValue("value").ToString();
 
-    class House
-    {
-        public House()
-        {
-            TotalNumberOfHousesBuilt += 1;
-        }
-
-        public string Address { get; set; }
-
-        public static int TotalNumberOfHousesBuilt { get; set; }
-
-        public void RingDoorbell()
-        {
-            Console.WriteLine("Ding dong! Is anyone home at " + Address + "?");
+            Console.WriteLine(joke2);
         }
     }
 }
