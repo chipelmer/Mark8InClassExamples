@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
 
 namespace Mark8InClassExamples
 {
@@ -8,21 +6,23 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            // This is not using all best practices, but it demonstrates making an API
-            // call and parsing a JSON response
+            Comedian myComedian = new Comedian();
+            myComedian.Name = "Mitch Hedberg";
 
-            string url = "https://api.chucknorris.io/jokes/random";
-            HttpClient client = new HttpClient();
-            string response = client.GetStringAsync(url).Result;
+            Singer mySinger = new Singer();
+            mySinger.Name = "Andy Dwyer";
 
-            // This manual way of pulling out the text of the joke is not good or reliable:
-            //int jokeStartIndex = response.IndexOf("value") + 8;
-            //int jokeLength = response.Length - jokeStartIndex - 2;
-            //string joke = response.Substring(jokeStartIndex, jokeLength);
+            // Different types being passed to the same method
+            TellToIntroduce(myComedian);
+            TellToIntroduce(mySinger);
 
-            string joke2 = JObject.Parse(response).GetValue("value").ToString();
+            myComedian.TellChuckNorrisJoke();
+        }
 
-            Console.WriteLine(joke2);
+        // Can be passed a Comedian or a Singer because both inherit from Human
+        static void TellToIntroduce(Human myHuman)
+        {
+            myHuman.Introduce();
         }
     }
 }
