@@ -21,7 +21,7 @@ namespace Mark8InClassExamples
         }
     }
 
-    static class IntegerExtensions
+    static class ExtensionMethods
     {
         public static int Multiply(this int number, int multiplyBy)
         {
