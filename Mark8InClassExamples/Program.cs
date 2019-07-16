@@ -6,25 +6,23 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your first name?");
-            string firstName = Console.ReadLine();
+            Console.WriteLine("What is your favorite mammal?");
+            string response = Console.ReadLine();
 
-            Console.WriteLine("What is your last name?");
-            string lastName = Console.ReadLine();
+            // ternary operator  ---  conditional ? true_option : false_option
+            string message = (response == "dog") ? "Awesome!" : "Ok then";
 
-            // string concatenation (a good vocab word)
-            string greeting1 = "It's nice to meet you, " + firstName + " " + lastName + "!";
+            // the ternary above does what this if statement would do
+            //if (response == "dog")
+            //{
+            //    message = "Awesome!";
+            //}
+            //else
+            //{
+            //    message = "Ok then";
+            //}
 
-            // string interpolation
-            string greeting2 = $"It's nice to meet you, {firstName} {lastName}!";
-
-            // string.Format - older way, mostly replaced by string interpolation now
-            string greeting3 = string.Format("It's nice to meet you, {0} {1}!", firstName, lastName);
-
-            // all 3 results are the same
-            Console.WriteLine(greeting1);
-            Console.WriteLine(greeting2);
-            Console.WriteLine(greeting3);
+            Console.WriteLine(message);
         }
     }
 }
