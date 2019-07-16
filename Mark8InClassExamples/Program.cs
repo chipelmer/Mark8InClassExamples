@@ -56,10 +56,12 @@ namespace Mark8InClassExamples
                 }
                 else if (menuChoice.ToUpper() == "SELECT")
                 {
-                    List<string> departments = repo.GetAllDepartments();
-                    foreach (string department in departments)
+                    List<Department> departments = repo.GetAllDepartments();
+
+                    Console.WriteLine("ID   Department Name");
+                    foreach (Department department in departments)
                     {
-                        Console.WriteLine(department);
+                        Console.WriteLine(department.Id + "    " + department.Name);
                     }
                     Console.ReadLine();
                 }

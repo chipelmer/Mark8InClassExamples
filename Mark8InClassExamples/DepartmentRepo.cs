@@ -7,26 +7,27 @@ namespace Mark8InClassExamples
     {
         private string connectionString = System.IO.File.ReadAllText("ConnectionString.txt");
 
-        public List<string> GetAllDepartments()
+        public List<Department> GetAllDepartments()
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
 
             MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT Name FROM departments;";
+            cmd.CommandText = "SELECT DepartmentID, Name FROM departments;";
 
             using (conn)
             {
                 conn.Open();
 
-                List<string> allDepartments = new List<string>();
+                List<Department> allDepartments = new List<Department>();
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read() == true)
                 {
-                    string currentDepartment = reader.GetString("Name");
-                    allDepartments.Add(currentDepartment);
+                    Department currentDept = new Department();
+                    currentDept.Id = reader.GetInt32("DepartmentID");
+                    currentDept.Name = reader.GetString("Name");
+                    allDepartments.Add(currentDept);
                 }
 
                 return allDepartments;
