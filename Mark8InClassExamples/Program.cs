@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Mark8InClassExamples
 {
@@ -6,23 +7,23 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your favorite mammal?");
-            string response = Console.ReadLine();
+            Console.WriteLine("Here are all the products:");
+            Console.WriteLine("ID | Name | Price | Stock Level | On Sale");
 
-            // ternary operator  ---  conditional ? true_option : false_option
-            string message = (response == "dog") ? "Awesome!" : "Ok then";
+            ProductRepo repo = new ProductRepo();
+            List<Product> products = repo.GetAllProducts();
 
-            // the ternary above does what this if statement would do
-            //if (response == "dog")
-            //{
-            //    message = "Awesome!";
-            //}
-            //else
-            //{
-            //    message = "Ok then";
-            //}
+            for (int i = 0; i < products.Count; i++)
+            {
+                int id = products[i].Id;
+                string name = products[i].Name;
+                decimal price = products[i].Price;
+                bool onSale = products[i].OnSale;
+                int stock = products[i].StockLevel;
 
-            Console.WriteLine(message);
+                Console.WriteLine($"{id} | {name} | {price} | {stock} | {onSale}");
+                Console.WriteLine();
+            }
         }
     }
 }
