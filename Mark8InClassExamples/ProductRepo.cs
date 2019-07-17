@@ -10,7 +10,7 @@ namespace Mark8InClassExamples
             MySqlConnection conn = new MySqlConnection();
             // DO NOT WANT TO COMMIT THIS STRING IN GIT
             conn.ConnectionString = "your connection string here";
-            // but way better to have the connection string in a configuratio file
+            // but way better to have the connection string in a configuration file
 
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT ProductID, Name, Price, OnSale, StockLevel " +
