@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Mark8InClassExamples
 {
@@ -7,23 +6,27 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Here are all the products:");
-            Console.WriteLine("ID | Name | Price | Stock Level | On Sale");
+            Console.WriteLine(Factorial(5));
+            Console.WriteLine(Factorial(10));
+        }
 
-            ProductRepo repo = new ProductRepo();
-            List<Product> products = repo.GetAllProducts();
-
-            for (int i = 0; i < products.Count; i++)
+        static int Factorial(int n)
+        {
+            if (n == 0)
             {
-                int id = products[i].Id;
-                string name = products[i].Name;
-                decimal price = products[i].Price;
-                bool onSale = products[i].OnSale;
-                int stock = products[i].StockLevel;
-
-                Console.WriteLine($"{id} | {name} | {price} | {stock} | {onSale}");
-                Console.WriteLine();
+                return 1;
             }
+
+            // recursive solution (as opposed to iterative)
+            return n * Factorial(n - 1);
+
+            // e.g.
+            // 5! = 5 * 4!
+            //  4! = 4 * 3!
+            //   3! = 3 * 2!
+            //    2! = 2 * 1!
+            //     1! = 1 * 0!
+            //      0! = 1 (because math)
         }
     }
 }
