@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Mark8InClassExamples
 {
@@ -7,36 +6,65 @@ namespace Mark8InClassExamples
     {
         static void Main(string[] args)
         {
-            int[] ages1 = { 4, 5, 7, 6, 5, 3, 34, 6, 7, 7, 6, 5, 4, 3, 4, 56, 65, 2, 13, 89 };
+            // Creating instances of the Node class
+            Node n1 = new Node(10);
+            Node n2 = new Node(15);
+            Node n3 = new Node(20);
+            Node n4 = new Node(25);
+            Node n5 = new Node(30);
 
-            // The integer array class does not have a sum method
-            // Sum is an extension method from the System.Linq namespace
-            int sumOfAges = ages1.Sum();
+            // Linking them all together to form a doubly-linked list
+            // (A singly-linked list is all that's being used for the
+            // SumLinkedList method below)
+            n1.Next = n2;
+            n2.Previous = n1;
+            n2.Next = n3;
+            n3.Previous = n2;
+            n3.Next = n4;
+            n4.Previous = n3;
+            n4.Next = n5;
+            n5.Previous = n4;
 
-            // Within the parens would be read as "x such that x is less than or equal to 17"
-            // Since Where() returns an IEnumerable, but we want to store the result as an array,
-            // we have to call ToArray() on the returned value from Where()
-            int[] minors = ages1.Where(x => x <= 17).ToArray();
-
-            int sumOfEvenAges = ages1.Where(x => x % 2 == 0).Sum();
-
-            // Extension methods can be discerned from Intellisense because they have
-            // a black arrow pointing down to the left of the method's name
-
-
-            string[] names = { "a", "ab", "abc", "b", "bc", "bcd", "c", "cd", "cde", "jimmy" };
-
-            // Get only the names with a length that is less than 2
-            string[] shortNames = names.Where(x => x.Length < 2).ToArray();
-
-            // Get only names that start with a uppercase or lowercase C
-            string[] cNames = names.Where(x => x[0] == 'c' || x[0] == 'C').ToArray();
-
-            // Get only names that start with an uppercase letter
-            string[] capitalFirstLetterNames = names.Where(x => char.IsUpper(x[0])).ToArray();
-
-            // Get an array with all the elements of names converted to uppercase
-            string[] uppercasedNames = names.Select(x => x = x.ToUpper()).ToArray();
+            Console.WriteLine(SumLinkedList(n1));
         }
+
+        static int SumLinkedList(Node headNode)
+        {
+            // Using a ternary operator and recursion
+            return headNode.Value + (headNode.Next == null ? 0 : SumLinkedList(headNode.Next));
+
+            // Recursive solution:
+            // if (headNode.Next == null)
+            // {
+            //     return headNode.Value;
+            // }
+
+            // return headNode.Value + SumLinkedList(headNode.Next);
+
+
+            // Iterative solution:
+            // Node currentNode = headNode;
+            // int sum = currentNode.Value;
+            // while (currentNode.Next != null)
+            // {
+            //     currentNode = currentNode.Next;
+            //     sum += currentNode.Value;
+            // }
+
+            // return sum;
+        }
+    }
+
+    class Node
+    {
+        public Node(int value)
+        {
+            Value = value;
+        }
+
+        public int Value { get; set; }
+        public Node Next { get; set; }
+        public Node Previous { get; set; }
+        // has next and previous, so can be used for a doubly-linked list
     }
 }
