@@ -1,7 +1,17 @@
-﻿
-<h2>Hello,</h2>
+﻿@model List<Product>
 
-@for (int i = 0; i < 10; i++)
-{
-  <p>world!</p>
-}
+<h2>Our Products:</h2>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  @foreach (Product prod in Model)
+  {
+  <tr>
+    <td>@prod.Name</td>
+    <td>@prod.Price</td>
+  </tr>
+  }
+</table>
