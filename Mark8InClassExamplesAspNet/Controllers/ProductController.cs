@@ -16,6 +16,19 @@ namespace Mark8InClassExamplesAspNet.Controllers
             return View(allProducts);
         }
 
+        public IActionResult ViewProduct(int id)
+        {
+            ProductRepository repo = new ProductRepository();
+            Product prod = repo.GetProduct(id);
+
+            if (prod == null)
+            {
+                return View("ProductNotFound");
+            }
+
+            return View("Product", prod);
+        }
+
         public IActionResult NewProduct()
         {
             return View();

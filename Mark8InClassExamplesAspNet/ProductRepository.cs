@@ -56,5 +56,39 @@ namespace Mark8InClassExamplesAspNet
                 return products;
             }
         }
+
+        public Product GetProduct(int id)
+        {
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = System.IO.File.ReadAllText("ConnectionString.txt");
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT ProductID, Name, Price " +
+                              "FROM products " +
+                              "WHERE ProductId = @id;";
+            cmd.Parameters.AddWithValue("id", id);
+
+            using (conn)
+            {
+                conn.Open();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Product product = new Product();
+
+                    product.Id = reader.GetInt32("ProductID");
+                    product.Name = reader.GetString("Name");
+                    product.Price = reader.GetDecimal("Price");
+
+                    return product;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
