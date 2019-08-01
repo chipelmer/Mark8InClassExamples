@@ -8,6 +8,24 @@ namespace Mark8InClassExamplesAspNet
 {
     class ProductRepository
     {
+        public void AddProductToDatabase(Product newProduct)
+        {
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = System.IO.File.ReadAllText("ConnectionString.txt");
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO products (name, price) " +
+                              "VALUES (@name, @price);";
+            cmd.Parameters.AddWithValue("name", newProduct.Name);
+            cmd.Parameters.AddWithValue("price", newProduct.Price);
+
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public List<Product> GetAllProducts()
         {
             MySqlConnection conn = new MySqlConnection();

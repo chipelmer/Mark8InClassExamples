@@ -1,0 +1,16 @@
+﻿@model Product
+
+<h2>New Product Information:</h2>
+
+@using (Html.BeginForm("Add", "Product", "Post"))
+{
+  <label asp-for="Name" class="control-label">Name:</label>
+  <br />
+  <input type="text" name="Name" class="form-control" value="" />
+  <br />
+  <label asp-for="Price" class="control-label">Price:</label>
+  <br />
+  <input type="number" name="Price" class="form-control" value="" />
+  <br />
+  <input type="submit" name="Submit" value="Add Product" class="btn btn-default" />
+}
