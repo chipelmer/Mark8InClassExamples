@@ -12,10 +12,7 @@ namespace Mark8InClassExamplesAspNet.Controllers
     {
         public IActionResult Index()
         {
-            ProductRepository repo = new ProductRepository();
-            List<Product> allProducts = repo.GetAllProducts();
-
-            return View(allProducts);
+            return View();
         }
 
         public IActionResult About()
