@@ -43,6 +43,26 @@ namespace Mark8InClassExamplesAspNet
             }
         }
 
+        public void UpdateProduct(Product prod)
+        {
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = System.IO.File.ReadAllText("ConnectionString.txt");
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE products " +
+                              "SET Name = @name, Price = @price " +
+                              "WHERE productid = @id;";
+            cmd.Parameters.AddWithValue("name", prod.Name);
+            cmd.Parameters.AddWithValue("price", prod.Price);
+            cmd.Parameters.AddWithValue("id", prod.Id);
+
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public List<Product> GetAllProducts()
         {
             MySqlConnection conn = new MySqlConnection();

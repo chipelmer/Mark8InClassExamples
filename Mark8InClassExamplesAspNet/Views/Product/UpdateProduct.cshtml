@@ -1,0 +1,17 @@
+﻿@model Product
+
+<h2>Update Product Information:</h2>
+
+@using (Html.BeginForm("Update", "Product", "Post"))
+{
+  <input asp-for="Id" type="hidden" value="@Model.Id" />
+  <label asp-for="Name" class="control-label">Name:</label>
+  <br />
+  <input type="text" name="Name" class="form-control" value="@Model.Name" />
+  <br />
+  <label asp-for="Price" class="control-label">Price:</label>
+  <br />
+  <input type="number" name="Price" class="form-control" value="@Model.Price" />
+  <br />
+  <input type="submit" name="Submit" value="Update Product" class="btn btn-default" />
+}
