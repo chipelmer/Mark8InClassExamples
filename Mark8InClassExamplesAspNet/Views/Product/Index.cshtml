@@ -10,7 +10,7 @@
   @foreach (Product prod in Model)
   {
     <tr>
-      <td>@prod.Name</td>
+      <td><a href="/Product/ViewProduct/@prod.Id">@prod.Name</a></td>
       <td>@prod.Price</td>
     </tr>
   }

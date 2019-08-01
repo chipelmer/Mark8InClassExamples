@@ -40,5 +40,12 @@ namespace Mark8InClassExamplesAspNet.Controllers
             repo.AddProductToDatabase(prod);
             return RedirectToAction("Index", "Product");
         }
+
+        public IActionResult Delete(int id)
+        {
+            ProductRepository repo = new ProductRepository();
+            repo.DeleteProductFromDatabase(id);
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

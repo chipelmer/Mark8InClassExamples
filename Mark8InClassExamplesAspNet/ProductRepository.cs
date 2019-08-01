@@ -26,6 +26,23 @@ namespace Mark8InClassExamplesAspNet
             }
         }
 
+        public void DeleteProductFromDatabase(int id)
+        {
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = System.IO.File.ReadAllText("ConnectionString.txt");
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM products " +
+                              "WHERE ProductID = @id;";
+            cmd.Parameters.AddWithValue("id", id);
+
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public List<Product> GetAllProducts()
         {
             MySqlConnection conn = new MySqlConnection();
