@@ -1,5 +1,5 @@
 ﻿
-namespace Mark8InClassExamplesAspNet
+namespace Mark8InClassExamplesAspNet.Models
 {
     public class Product
     {
